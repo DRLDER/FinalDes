@@ -14,48 +14,68 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 </head>
 <body>
 <style>
     .boxsize {
-        width: 450px;
-        height: 300px;
+        width: 300px;
+        height: 100%;
+        text-align: left;
+        padding: 35px 35px 35px 35px;
     }
-    .wordfontchange{
-        font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+
+    .wordfontchange {
+        font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
     }
-    .showitarea{
+
+    .showitarea {
         background-color: aquamarine;
     }
 </style>
 <!-- Image and text -->
 {#导航栏#}
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="/static/JHOri.png" height="30px" width="30px" class="d-inline-block align-top" alt="error">
-    <p>简颢科技管理系统</p>
-  </a>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="">
+        <img src="/static/JHOri.png" height="30px" width="30px" class="d-inline-block align-top" alt="error">
+        <strong class="wordfontchange"><span>简颢科技管理系统</span></strong>
+    </a>
 </nav>
+
 {#登录表单#}
-<div class="boxsize" >
+<div>
+    <p style="text-align: left"><img src="/static/JHOri.png" class="boxsize showitarea"></p>
+    <label class="boxsize showitarea" style="horiz-align: left">
     <form action="info/" method="post">
         {% csrf_token %}
         <div class="form-group">
-            <strong><label for="exampleInputEmail1">Username</label></strong>
-            <input type="text" class="form-control" id="exampleInputEmail1" name="username">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your info with anyone else.</small>
+            <strong><label for="usernametext" class="wordfontchange">Username</label></strong>
+            <input type="text" class="form-control" id="usernametext" name="username">
+            <small id="usernameHelp" class="form-text text-muted">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
+                     class="bi bi-umbrella" viewBox="0 0 16 16">
+                    <path d="M8 0a.5.5 0 0 1 .5.5v.514C12.625 1.238 16 4.22 16 8c0 0 0 .5-.5.5-.149 0-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394A3.166 3.166 0 0 0 13 7.5c-.638 0-1.178.213-1.564.434a3.484 3.484 0 0 0-.555.394l-.025.023-.003.003s-.204.146-.353.146-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394 3.3 3.3 0 0 0-1.064-.39V13.5H8h.5v.039l-.005.083a2.958 2.958 0 0 1-.298 1.102 2.257 2.257 0 0 1-.763.88C7.06 15.851 6.587 16 6 16s-1.061-.148-1.434-.396a2.255 2.255 0 0 1-.763-.88 2.958 2.958 0 0 1-.302-1.185v-.025l-.001-.009v-.003s0-.002.5-.002h-.5V13a.5.5 0 0 1 1 0v.506l.003.044a1.958 1.958 0 0 0 .195.726c.095.191.23.367.423.495.19.127.466.229.879.229s.689-.102.879-.229c.193-.128.328-.304.424-.495a1.958 1.958 0 0 0 .197-.77V7.544a3.3 3.3 0 0 0-1.064.39 3.482 3.482 0 0 0-.58.417l-.004.004S5.65 8.5 5.5 8.5c-.149 0-.352-.145-.352-.145l-.004-.004a3.482 3.482 0 0 0-.58-.417A3.166 3.166 0 0 0 3 7.5c-.638 0-1.177.213-1.564.434a3.482 3.482 0 0 0-.58.417l-.004.004S.65 8.5.5 8.5C0 8.5 0 8 0 8c0-3.78 3.375-6.762 7.5-6.986V.5A.5.5 0 0 1 8 0zM6.577 2.123c-2.833.5-4.99 2.458-5.474 4.854A4.124 4.124 0 0 1 3 6.5c.806 0 1.48.25 1.962.511a9.706 9.706 0 0 1 .344-2.358c.242-.868.64-1.765 1.271-2.53zm-.615 4.93A4.16 4.16 0 0 1 8 6.5a4.16 4.16 0 0 1 2.038.553 8.688 8.688 0 0 0-.307-2.13C9.434 3.858 8.898 2.83 8 2.117c-.898.712-1.434 1.74-1.731 2.804a8.687 8.687 0 0 0-.307 2.131zm3.46-4.93c.631.765 1.03 1.662 1.272 2.53.233.833.328 1.66.344 2.358A4.14 4.14 0 0 1 13 6.5c.77 0 1.42.23 1.897.477-.484-2.396-2.641-4.355-5.474-4.854z"/>
+                </svg>
+                您的信息我们将会保密。</small>
         </div>
         <div class="form-group">
-            <strong><label for="exampleInputPassword1">Password</label></strong>
+            <strong><label for="exampleInputPassword1" class="wordfontchange">Password</label></strong>
             <input type="password" class="form-control" id="exampleInputPassword1" name="password">
         </div>
         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <input type="checkbox" class="form-check-input" id="RBmeBtn">
             <label class="form-check-label" for="exampleCheck1">remember me</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div align="right">
+            <button type="reset" class="btn btn-primary">Reset</button>
+            <span style="padding: 0px 0px 10px 10px"></span>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+
     </form>
+    </label>
 </div>
+
 
 </body>
 </html>

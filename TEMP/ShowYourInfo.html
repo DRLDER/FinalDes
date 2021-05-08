@@ -1,14 +1,1561 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>Info</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="/static/JS/jquerysession.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/mycsslist_ShowYourInfo.css">
+    <script src="/static/JS/echarts.min.js"></script>
+    <script src="/static/JS/ecStat.min.js"></script>
+    <script src="/static/JS/MyJsList.js"></script>
+
 </head>
 <body>
-username:{{ username }}
-<br>
-password:{{ password }}
-<br>
-<a href="../">back</a>
+<nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="">
+        <img src="/static/JHOri.png" height="30px" width="30px" class="d-inline-block align-top" alt="error">
+        <strong class="wordfontchange"><span>简颢科技管理系统</span></strong>
+    </a>
+    <div class="linkpart">
+        <div class="welcomelabel">欢迎，</div>
+        <div class="usernamelabel">{{ username }}</div>
+        <div class="welcomelabel"> ！</div>
+    </div>
+</nav>
+<div class="box">
+    <div class="rowbox" id="rowbox">
+        <a href="javascript:;" id="memberDataTake">人员数据收集</a>
+        <a href="javascript:;" id="ComECO">公司财产事务</a>
+        <a href="javascript:;" id="marketECO">市场盈亏数据</a>
+        <a href="javascript:;" id="VTData">数据分析及可视化</a>
+        <a href="javascript:;" id="infoPlate">内部消息通报</a>
+    </div>
+    <div class="contentbox clearfix" id="contentbox">
+        {#        <div>username:{{ username }}</div>#}
+        {#        <div>password:{{ password }}</div>#}
+        {#        <div>LoginState:{{ errorUorP }}</div>#}
+        {#        <div><a href="../">back</a></div>#}
+        {# 背景模块 /90/B#}
+        <div class="FirstPage">
+            <div>JH TECHNOLOGY CO LTD</div>
+        </div>
+        {# 人员数据收集/90/B#}
+        <div index="memberDataTake" id="memberDataTakePart" class="memberDataTakePart">
+            <div>人员数据收集</div>
+            {# 人员数据收集表单#}
+            <form action="/memInfoList/" method="post" class="memberInfoForm">
+                {% csrf_token %}
+                <div class="clearfix">
+                    <label for="nameTextPlace" class="wordfontchange">姓名:</label>
+                    <input type="text" placeholder="请输入姓名" name="nameTextPlace" id="nameTextPlace" class="form-control"
+                           maxlength="20"
+                           style="width: 15%;text-align: center;">
+                    <label for="nationTextPlace" class="wordfontchange">民族:</label>
+                    <select name="nationTextPlace" id="nationTextPlace" class="form-control"
+                            style="width: 15%;">
+                        <option value="汉族" selected="selected">汉族</option>
+                        <option value="蒙古族">蒙古族</option>
+                        <option value="彝族">彝族</option>
+                        <option value="侗族">侗族</option>
+                        <option value="哈萨克族">哈萨克族</option>
+                        <option value="畲族">畲族</option>
+                        <option value="纳西族">纳西族</option>
+                        <option value="仫佬族">仫佬族</option>
+                        <option value="仡佬族">仡佬族</option>
+                        <option value="怒族">怒族</option>
+                        <option value="保安族">保安族</option>
+                        <option value="鄂伦春族">鄂伦春族</option>
+                        <option value="回族">回族</option>
+                        <option value="壮族">壮族</option>
+                        <option value="瑶族">瑶族</option>
+                        <option value="傣族">傣族</option>
+                        <option value="高山族">高山族</option>
+                        <option value="景颇族">景颇族</option>
+                        <option value="羌族">羌族</option>
+                        <option value="锡伯族">锡伯族</option>
+                        <option value="乌孜别克族">乌孜别克族</option>
+                        <option value="裕固族">裕固族</option>
+                        <option value="赫哲族">赫哲族</option>
+                        <option value="藏族">藏族</option>
+                        <option value="布依族">布依族</option>
+                        <option value="白族">白族</option>
+                        <option value="黎族">黎族</option>
+                        <option value="拉祜族">拉祜族</option>
+                        <option value="柯尔克孜族">柯尔克孜族</option>
+                        <option value="布朗族">布朗族</option>
+                        <option value="阿昌族">阿昌族</option>
+                        <option value="俄罗斯族">俄罗斯族</option>
+                        <option value="京族">京族</option>
+                        <option value="门巴族">门巴族</option>
+                        <option value="维吾尔族">维吾尔族</option>
+                        <option value="朝鲜族">朝鲜族</option>
+                        <option value="土家族">土家族</option>
+                        <option value="傈僳族">傈僳族</option>
+                        <option value="水族">水族</option>
+                        <option value="土族">土族</option>
+                        <option value="撒拉族">撒拉族</option>
+                        <option value="普米族">普米族</option>
+                        <option value="鄂温克族">鄂温克族</option>
+                        <option value="塔塔尔族">塔塔尔族</option>
+                        <option value="珞巴族">珞巴族</option>
+                        <option value="苗族">苗族</option>
+                        <option value="满族">满族</option>
+                        <option value="哈尼族">哈尼族</option>
+                        <option value="佤族">佤族</option>
+                        <option value="东乡族">东乡族</option>
+                        <option value="达斡尔族">达斡尔族</option>
+                        <option value="毛南族">毛南族</option>
+                        <option value="塔吉克族">塔吉克族</option>
+                        <option value="德昂族">德昂族</option>
+                        <option value="独龙族">独龙族</option>
+                        <option value="基诺族">基诺族</option>
+                    </select>
+                    <label for="NPTextPlace" class="wordfontchange">籍贯:</label>
+                    <input type="text" placeholder="请输入籍贯" name="NPTextPlace" id="NPTextPlace" class="form-control"
+                           maxlength="8"
+                           style="width: 15%;text-align: center;">
+                    <label for="brithPlaceTextPlace" class="wordfontchange">出生地:</label>
+                    <input type="text" placeholder="请输入出生地" name="brithPlaceTextPlace" id="brithPlaceTextPlace"
+                           class="form-control" maxlength="8"
+                           style="width: 15%;text-align: center;">
+
+                </div>
+                <div class="secendPart clearfix">
+                    <label class="wordfontchange">性别:</label>
+                    <input type="radio" id="sexmaleChoosePlace" name="sexChoose" checked="checked">
+                    <label class="wordfontchange" for="sexmaleChoosePlace">male</label>
+                    <input type="radio" id="sexfemaleChoosePlace" name="sexChoose">
+                    <label class="wordfontchange" for="sexfemaleChoosePlace">female</label>
+                    <label for="brithTextPlace" class="wordfontchange" style="margin-left: 22px;">出生年月:</label>
+                    <input type="month" id="brithTextPlace" name="brithTextPlace" min="1930-01" value="1930-01"
+                           style="margin-top: 4px;">
+                    <label for="HealthTextPlace" class="wordfontchange">健康状况:</label>
+                    <input type="text" placeholder="默认填（健康）" id="HealthTextPlace" name="HealthTextPlace"
+                           class="form-control" maxlength="8"
+                           style="width: 15%;text-align: center;margin-top: 0;">
+                    <label for="TelTextPlace" class="wordfontchange">联系电话:</label>
+                    <input type="text" placeholder="请输入联系电话" name="TelTextPlace" id="TelTextPlace" class="form-control"
+                           maxlength="20"
+                           style="width: 20%;text-align: center;margin-top: 0;">
+                </div>
+                <div class="thirdPart clearfix">
+                    <label for="emailTextPlace" class="wordfontchange">个人邮箱:</label>
+                    <input type="email" placeholder="sophie@example.com" id="emailTextPlace" name="emailTextPlace"
+                           class="form-control"
+                           maxlength="100"
+                           style="width: 35%;text-align: center;margin-top: 0;">
+                    <label for="EDTextPlace" class="wordfontchange">学历:</label>
+                    <input type="text" placeholder="|大专|本科|硕士|博士|" id="EDTextPlace" name="EDTextPlace"
+                           class="form-control"
+                           maxlength="2"
+                           style="width: 20%;text-align: center;margin-top: 0;">
+                </div>
+                <div class="forth clearfix">
+                    <label for="expTextPlace" class="wordfontchange">个人过往（工作、实习经历）:</label>
+                    <div>
+                        <textarea rows="15" cols="100" placeholder="过往经历:年月-年月 经历" id="expTextPlace"
+                                  name="expTextPlace"
+                                  class="form-control"
+                                  style="width: 95%;margin: 0 auto;float: none;"></textarea>
+                    </div>
+
+                </div>
+                <div class="btnline" style="text-align: right;margin: 5px 25px;">
+                    <button type="reset" class="btn btn-primary" style="margin-right: 4px;" id="resetBtn">reset</button>
+                    <script>
+                        var textAreaPlace = document.getElementById('expTextPlace');
+                        var resetBtn = document.getElementById('resetBtn');
+                        resetBtn.onclick = function () {
+                            textAreaPlace.innerText = "";
+                        }
+                    </script>
+                    <button type="button" class="btn btn-success" id="submitBtn">submit</button>
+                    {#                根据session中meminfodataexisted的值判定是否成功上传#}
+                    <script>
+                        $('#submitBtn').click(function () {
+                            $.ajax({
+                                url: '/memInfoList/',
+                                type: 'post',
+                                data: {
+                                    'username': $('#nameTextPlace').val(),
+                                    'nation': $('#nationTextPlace').val(),
+                                    'NP': $('#NPTextPlace').val(),
+                                    'birthplace': $('#brithPlaceTextPlace').val(),
+                                    'sex': $('#sexmaleChoosePlace').val(),
+                                    'birthday': $('#brithTextPlace').val(),
+                                    'health': $('#HealthTextPlace').val(),
+                                    'tel': $('#TelTextPlace').val(),
+                                    'email': $('#emailTextPlace').val(),
+                                    'education': $('#EDTextPlace').val(),
+                                    'expText': $('#expTextPlace').val(),
+                                },
+                                success: function (data) {
+                                    {#console.log(data)#}
+                                    var newdata = JSON.parse(data)
+                                    alert(newdata['Message'])
+                                }
+                            })
+                        });
+                    </script>
+                    {#var getMemListBtn = document.getElementById('submitBtn');#}
+                    {#getMemListBtn.addEventListener('mouseover', function () {#}
+                    {#    console.log('i active');#}
+                    {#    console.log(sessionStorage.getItem('meminfodataexisted'));#}
+
+
+                </div>
+
+            </form>
+
+        </div>
+        {# 公司收益模块/90/B#}
+        <div index="ComECO" id="ComECOpart" class="ComECOpart">
+            <div class="label">公司收支</div>
+            <div class="content clearfix">
+                <div>
+                    <div id="label0">自研项目</div>
+                    <div>
+                        <div id="EIDiv0">
+                            <div>
+                                <label>收入:</label>
+                                <div id="EIDataText0"></div>
+                            </div>
+                        </div>
+                        <div id="EODiv0">
+                            <div>
+                                <label>支出:</label>
+                                <div id="EODataText0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="label1">外方合作</div>
+                    <div>
+                        <div id="EIDiv1">
+                            <div>
+                                <label>收入:</label>
+                                <div id="EIDataText1"></div>
+                            </div>
+                        </div>
+                        <div id="EODiv1">
+                            <div>
+                                <label>支出:</label>
+                                <div id="EODataText1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="label2">人员工资</div>
+                    <div>
+                        <div id="EODiv2">
+                            <div>
+                                <label>支出:</label>
+                                <div id="EODataText2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="label3">税务支出</div>
+                    <div>
+                        <div id="EODiv3">
+                            <div>
+                                <label>支出:</label>
+                                <div id="EODataText3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="label4">宣传支出</div>
+                    <div>
+                        <div id="EODiv4">
+                            <div>
+                                <label>支出:</label>
+                                <div id="EODataText4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="label5">员工开销</div>
+                    <div>
+                        <div id="EODiv5">
+                            <div>
+                                <label>支出:</label>
+                                <div id="EODataText5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {#                支出项目提交#}
+                <div>
+                    <div id="label6">支出项目提交</div>
+                    <div>
+                        <div id="EODiv6" style="margin: 15px auto;">
+                            <div>
+                                <label>总支出:</label>
+                                <div id="totalODiv"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="text-align: left">
+                                {#                                支出提交表单#}
+                                <form action="javascript:;" method="post">
+                                    {% csrf_token %}
+                                    <label class="DiyLabel">项目明细（名称）:</label>
+                                    <div>
+                                        <input type="text" maxlength="50" class="form-control" id="ECOOProjectName"
+                                               style="height: 25px; width: 90%; margin: 5px auto;">
+                                    </div>
+                                    <label class="DiyLabel">项目支出:</label>
+                                    <div style="display: inline-block;">
+                                        <input type="text" maxlength="20" class="form-control" id="ECOOProjectCost"
+                                               style="height: 25px; width: 125px; margin: 5px auto;">
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <button type="reset" class="btn btn-secondary"
+                                                style="margin-right: 5px; height: 25px;line-height: 25px;padding-top: 0;">
+                                            reset
+                                        </button>
+                                        <button type="button" class="btn btn-success" id="ECOOBtn"
+                                                style="height: 25px;line-height: 25px; padding-top: 0;margin-right: 10px;">
+                                            submit
+                                        </button>
+                                    </div>
+                                </form>
+                                {#                                支出表单提交AJAX#}
+                                <script>
+                                    $("#ECOOBtn").click(function () {
+                                        if ($('#ECOOProjectName').val() == "" && $('#ECOOProjectCost').val() == "") {
+                                            alert('您还没填写内容！');
+                                        } else {
+                                            var confirmFlag = confirm("你确定要添加这个新项目吗？\n项目名称:" +
+                                                $('#ECOOProjectName').val() + "\n项目支出:" + $('#ECOOProjectCost').val())
+                                            if (confirmFlag) {
+                                                ECOOProFormUpdata();
+                                            }
+                                        }
+                                    })
+
+                                    //提交支出项目表单的方法
+                                    function ECOOProFormUpdata() {
+                                        $.ajax({
+                                            url: '/ECOOList/',
+                                            type: 'post',
+                                            data: {
+                                                'projectNM': $('#ECOOProjectName').val(),
+                                                'projectCost': $('#ECOOProjectCost').val(),
+                                            },
+                                            success: function (data) {
+                                                var writedata = JSON.parse(data)
+                                                alert(writedata['Message'])
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {#                收入项目提交#}
+                <div>
+                    <div id="label7">收入项目提交</div>
+                    <div>
+                        <div id="EIDiv2" style="margin: 15px auto;">
+                            <div>
+                                <label>总收入:</label>
+                                <div id="totalIDiv"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="text-align: left">
+                                {#                                收入提交表单#}
+                                <form action="">
+                                    {% csrf_token %}
+                                    <label class="DiyLabel">项目明细（名称）:</label>
+                                    <div>
+                                        <input type="text" maxlength="50" class="form-control" id="ECOIProjectName"
+                                               style="height: 25px; width: 90%; margin: 5px auto;">
+                                    </div>
+                                    <label class="DiyLabel">项目收入:</label>
+                                    <div style="display: inline-block;">
+                                        <input type="text" maxlength="20" class="form-control" id="ECOIProjectGot"
+                                               style="height: 25px; width: 125px; margin: 5px auto;">
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <button type="reset" class="btn btn-secondary"
+                                                style="margin-right: 5px; height: 25px;line-height: 25px;padding-top: 0;">
+                                            reset
+                                        </button>
+                                        <button type="button" class="btn btn-success" id="ECOIBtn"
+                                                style="height: 25px;line-height: 25px; padding-top: 0;margin-right: 10px;">
+                                            submit
+                                        </button>
+                                    </div>
+                                </form>
+                                {#                                支出表单提交AJAX#}
+                                <script>
+                                    $("#ECOIBtn").click(function () {
+                                        if ($('#ECOIProjectName').val() == "" && $('#ECOIProjectGot').val() == "") {
+                                            alert('您还没填写内容！');
+                                        } else {
+                                            var confirmFlag = confirm("你确定要添加这个新项目吗？\n项目名称:" +
+                                                $('#ECOIProjectName').val() + "\n项目收入:" + $('#ECOIProjectGot').val())
+                                            if (confirmFlag) {
+                                                ECOIProFormUpdata();
+                                            }
+                                        }
+                                    })
+
+                                    //提交收入项目表单的方法
+                                    function ECOIProFormUpdata() {
+                                        $.ajax({
+                                            url: '/ECOIList/',
+                                            type: 'post',
+                                            data: {
+                                                'ProjectNM': $('#ECOIProjectName').val(),
+                                                'ProjectGot': $('#ECOIProjectGot').val(),
+                                            },
+                                            success: function (data) {
+                                                var writedata = JSON.parse(data)
+                                                alert(writedata['Message'])
+                                            }
+                                        })
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {#                标题头、收入、支出相关样式脚本#}
+                <script>
+                    {#设置标题头样式、收入div、支出div的CSS#}
+                    var getLabel = [];
+                    //批量使用标题头样式
+                    for (var i = 0; i < 8; i++) {
+                        getLabel[i] = document.getElementById('label' + i);
+                    }
+                    var LabelObj = getLabel;
+                    for (var i = 0; i < LabelObj.length; i++) {
+                        getLabel[i].className = 'comEClabel';
+                    }
+                    //设置收入div样式
+                    var getEIdiv = [];
+                    for (var i = 0; i < 3; i++) {
+                        getEIdiv[i] = document.getElementById('EIDiv' + i);
+
+                    }
+                    var EIObj = getEIdiv;
+                    for (var i = 0; i < EIObj.length; i++) {
+                        if (i >= 0 && i < 2) {
+                            EIObj[i].className = 'EIDivCSS';
+                        } else {
+                            EIObj[i].className = 'EIDivCSS2';
+                        }
+                    }
+                    //设置盒子下面元素的样式表
+                    for (var i = 0; i < EIObj.length; i++) {
+                        EIObj[i].querySelector('div').className = 'clearfix';
+                        EIObj[i].querySelector('label').className = 'EIDivLabel';
+                        EIObj[i].querySelector('div').querySelector('div').className = 'EIDivData';
+                    }
+                    //设置支出模块样式
+                    var getEOdiv = [];
+                    for (var i = 0; i < 7; i++) {
+                        getEOdiv[i] = document.getElementById('EODiv' + i);
+                    }
+                    var EOObj = getEOdiv;
+                    for (var i = 0; i < EOObj.length; i++) {
+                        if (i < 2 && i >= 0) {
+                            EOObj[i].className = 'EODivCSS';
+                        } else {
+                            EOObj[i].className = 'EODivCSS2';
+                        }
+
+                    }
+                    //console.dir(EIObj);
+                    //设置盒子下面元素的样式表
+                    for (var i = 0; i < EOObj.length; i++) {
+                        EOObj[i].querySelector('div').className = 'clearfix';
+                        EOObj[i].querySelector('label').className = 'EODivLabel';
+                        EOObj[i].querySelector('div').querySelector('div').className = 'EODivData';
+                    }
+                </script>
+
+                {#                实现支出和收入的动态更新#}
+                {#                id="totalODiv"、id="totalIDiv"总支出，总收入#}
+                {#                2个收入标签、6个支出标签，[0~2)，[0~6)#}
+                {#                EODataText+K支出标签，EIDataText+K收入标签#}
+
+                <script>
+
+
+                    {#设置全局时钟，监听全局事件，伴随页面关闭#}
+                    {############################################}
+                    {#1.设置ECO动态刷新时钟变量#}
+                    {#获取ECOIO小类和总和收入及支出AJAX方法#}
+
+                    function getECOIO() {
+                        $.ajax({
+                            url: '/getECOIO/',
+                            type: 'post',
+                            data: {},
+                            success: function (data) {
+                                var newdata = JSON.parse(data)
+                                {#总支出和总收入#}
+                                var strECOOsum = formatNum(newdata['ECOOsum'])
+                                var strECOIsum = formatNum(newdata['ECOIsum'])
+                                {#支出分类#}
+                                var strECOOsumClassDetail = {
+                                    'strECOOsum0': formatNum(newdata['ECOOsum0']),
+                                    'strECOOsum1': formatNum(newdata['ECOOsum1']),
+                                    'strECOOsum2': formatNum(newdata['ECOOsum2']),
+                                    'strECOOsum3': formatNum(newdata['ECOOsum3']),
+                                    'strECOOsum4': formatNum(newdata['ECOOsum4']),
+                                    'strECOOsum5': formatNum(newdata['ECOOsum5']),
+                                    'strECOOsumsub1': formatNum(newdata['ECOOsumsub1']),
+                                }
+                                {#收入分类#}
+                                var strECOIsumClassDetail = {
+                                    'strECOIsum0': formatNum(newdata['ECOIsum0']),
+                                    'strECOIsum1': formatNum(newdata['ECOIsum1']),
+                                    'strECOIsumsub1': formatNum(newdata['ECOIsumsub1']),
+                                }
+
+                                {#设置总收入和总支出显示#}
+                                $('#totalODiv').text('-' + strECOOsum)
+                                $("#totalIDiv").text('+' + strECOIsum)
+                                {#设置分类支出显示#}
+                                for (let i = 0; i < 6; i++) {
+                                    $('#EODataText' + i).text('-' + strECOOsumClassDetail['strECOOsum' + i])
+                                }
+                                {#设置分类收入显示#}
+                                for (let i = 0; i < 2; i++) {
+                                    $('#EIDataText' + i).text('+' + strECOIsumClassDetail['strECOIsum' + i])
+                                }
+                            }
+                        })
+                    }
+
+                    {#设置ECO#}
+                    var timerDisplayECOData = undefined;
+                    {#ECO生存事件阶段模块#}
+                    {#设定开关标记，防止无限生成时钟#}
+                    var flag = 0;
+                    {#2.设置ECO动态刷新时钟、动态函数#}
+                    var globalTimer = setInterval(function () {
+                        var displayState = $('#contentbox #ComECOpart').css('display');
+                        if (displayState == 'block') {
+                            {#console.log('test:' + timerDisplayECOData);#}
+                            if (flag == 0) {
+                                timerDisplayECOData = setInterval(getECOIO, 1000);
+                                flag = 1
+                            }
+                        } else if (displayState == 'none') {
+                            if (timerDisplayECOData != undefined) {
+                                clearInterval(timerDisplayECOData);
+                                flag = 0
+                            }
+                        }
+                    }, 500)
+                </script>
+            </div>
+        </div>
+        {# 市场盈利模块/90/B#}
+        <div index="marketECO" id="marketECOpart" class="marketECOpart">
+            <div class="label">市场盈利</div>
+            <div class="content clearfix">
+                <div id="bigBtn" class="bigBtn" style="background-color: rgba(215,241,191,0.35);">
+                    <div class="ChartLabel">今年市场销售额前10名（月计）</div>
+                    <div id="ercharts1" style="width: 100%;height: 90%;"></div>
+
+                </div>
+                <div id="marketInfoForm" class="bigBtn" style="background-color: rgba(186,183,183,0.35);">
+                    <form action="javascript:;" method="post" class="Productionform clearfix">
+                        <label for="PDNameText">ProductionName:</label>
+                        <input type="text" class="form-control" id="PDNameText" style="width: 80%;">
+                        <label for="UnitPrice">UnitPrice:</label>
+                        <input type="number" class="form-control" id="UnitPriceText" style="width: 20%;">
+                        <label for="SoldNumText">SoldNum:</label>
+                        <input type="number" class="form-control" id="SoldNumText" style="width: 20%;">
+                        <label for="TotalPriceText">TotalPrice:</label>
+                        <input type="text" class="form-control" id="TotalPriceText" style="width: 20%;"
+                               disabled="disabled" value="" placeholder="该项目会自动计算！">
+                        {#自动获取输入内容，并自动计算总价脚本#}
+                        <script>
+                            //自动获取输入内容，并自动计算总价
+                            function AutoField() {
+                                let UnitPrice = $('#UnitPriceText').val()
+                                let SoldNum = $('#SoldNumText').val()
+
+                                if (UnitPrice != null && SoldNum != null) {
+                                    $('#TotalPriceText').val((UnitPrice * SoldNum).toString());
+                                }
+                            }
+
+                            $('#UnitPriceText').bind('input', AutoField)
+                            $('#SoldNumText').bind('input', AutoField)
+                        </script>
+                        <label for="">SoldDate:</label>
+                        <input type="month" class="form-control" id="SoldDateText" style="width: 20%;">
+                        <div class="btnPlace">
+                            <button type="reset" class="btn btn-warning">Reset</button>
+                            <button type="button" class="btn btn-success" id="updataPDInfoBtn">更新项目订单</button>
+                        </div>
+                    </form>
+                    <script>
+                        $('#updataPDInfoBtn').click(function () {
+                            if ($('#PDNameText').val() != '' && $('#UnitPriceText').val() != '' &&
+                                $('#SoldNumText').val() != '' && $('#SoldDateText').val() != '') {
+                                var getSure = confirm("您确定要更此内容吗？\n项目名字:" + $('#PDNameText').val() + ' 单价:' +
+                                    $('#UnitPriceText').val() + '\n当月销售量:' + $('#SoldNumText').val() + ' 总销售额:' +
+                                    $('#TotalPriceText').val() + '\n销售日期:' + $('#SoldDateText').val())
+                                if (getSure) {
+                                    {#更新产品表项至数据库#}
+                                    $.ajax({
+                                        url: '/PDFormUpdate/',
+                                        type: 'post',
+                                        data: {
+                                            'PDName': $('#PDNameText').val(),
+                                            'UnitPrice': $('#UnitPriceText').val(),
+                                            'SoldNum': $('#SoldNumText').val(),
+                                            'TotalPrice': $('#TotalPriceText').val(),
+                                            'SoldDate': $('#SoldDateText').val()
+                                        },
+                                        success: function (data) {
+                                            {#console.log(data);#}
+                                            var newdata = JSON.parse(data);
+                                            alert(newdata['Message']);
+                                        }
+                                    })
+                                }
+                            } else {
+                                alert('请输入内容，不要留空！')
+                            }
+                        })
+                    </script>
+                </div>
+                <div id="UpdataPDErchart" class="UpdataPDErchartBtn">
+                    <button type="button" class="btn btn-success" id="UPDErchartBtn">生成新表</button>
+                </div>
+                {#图标绘制脚本#}
+                <script>
+                    //绘制算法
+                    function showercharts1(data) {
+                        {#console.log(data)#}
+                        var chartDom = document.getElementById('ercharts1');
+                        var myChart = echarts.init(chartDom);
+                        var option;
+                        // Generate data
+                        var category = [];//存入项目名字
+                        var lineData = [];//存入售出总额
+                        var barData = [];//存入售出个数
+                        var DateData = [];//存入售出日期
+                        {#‘Object.keys(data).length / 5’  获取data中的数据条数#}
+                        {#console.log('data长度：' + Object.keys(data).length / 5);#}
+                        for (var i = 0; i < Object.keys(data).length; i++) {
+                            category.push(
+                                data[i][0]
+                            );//存入项目名字
+                            var b = parseFloat(data[i][2]);//存入售出个数
+                            var d = parseFloat(data[i][3]) / 100;//存入售出总额
+                            barData.push(b)
+                            lineData.push(d);
+                            DateData.push(data[i][4])
+                        }
+                        // option
+                        option = {
+                            backgroundColor: '#0f375f',
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {
+                                    type: 'shadow'
+                                }
+                            },
+                            legend: {
+                                data: ['line', 'bar'],
+                                textStyle: {
+                                    color: '#ccc'
+                                }
+                            },
+                            xAxis: {
+                                data: category,
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#ccc'
+                                    }
+                                }
+                            },
+                            yAxis: {
+                                splitLine: {show: false},
+                                axisLine: {
+                                    lineStyle: {
+                                        color: '#ccc'
+                                    }
+                                }
+                            },
+                            series: [{
+                                name: '产品售出总额(百元):',
+                                type: 'line',
+                                smooth: true,
+                                showAllSymbol: true,
+                                symbol: 'emptyCircle',
+                                symbolSize: 15,
+                                data: lineData
+                            }, {
+                                name: '产品售出个数:',
+                                type: 'bar',
+                                barWidth: 10,
+                                itemStyle: {
+                                    barBorderRadius: 5,
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [
+                                            {offset: 0, color: '#14c8d4'},
+                                            {offset: 1, color: '#43eec6'}
+                                        ]
+                                    )
+                                },
+                                data: barData
+                            }, {
+                                name: '产品名称:',
+                                type: 'bar',
+                                barGap: '-100%',
+                                barWidth: 10,
+                                itemStyle: {
+                                    color: new echarts.graphic.LinearGradient(
+                                        0, 0, 0, 1,
+                                        [
+                                            {offset: 0, color: 'rgba(20,200,212,0.5)'},
+                                            {offset: 0.2, color: 'rgba(20,200,212,0.2)'},
+                                            {offset: 1, color: 'rgba(20,200,212,0)'}
+                                        ]
+                                    )
+                                },
+                                z: -12,
+                                data: category
+                            }, {
+                                name: '售出日期',
+                                type: 'pictorialBar',
+                                symbol: 'rect',
+                                itemStyle: {
+                                    color: '#0f375f'
+                                },
+                                symbolRepeat: true,
+                                symbolSize: [12, 4],
+                                symbolMargin: 1,
+                                z: -10,
+                                data: DateData
+                            }]
+                        };
+
+                        option && myChart.setOption(option);
+                    }
+
+                    //生成新表按钮事件
+                    $('#UPDErchartBtn').click(function () {
+                        $('#ercharts1').remove()
+                        var newercharts = $('<div id="ercharts1" style="width: 100%;height: 90%;"></div>');
+                        $('#bigBtn').append(newercharts)
+                        ProductionInfoUpdate();
+                    })
+
+                    //所有产品项目的AJAX更新,同步图标
+                    function ProductionInfoUpdate() {
+                        $.ajax({
+                            url: '/ProductionInfoUpdate/',
+                            type: 'post',
+                            data: {},
+                            success: function (data) {
+                                var writedata = JSON.parse(data)
+                                console.log(writedata)
+                                var getNewData = writedata;
+
+                                {#console.log(getNewData.length)#}
+                                {#已获取到了所有的产品属性列表#}
+                                {#对writedata进行处理，实现对图表的传值#}
+                                showercharts1(writedata);
+
+                            }
+                        })
+                    }
+                </script>
+            </div>
+
+        </div>
+        {# 可视化数据模块/90#}
+        <div index="VTData" id="VTDataPart" class="VTDataPart">
+            <div class="label">可视化数据</div>
+            <div class="content clearfix">
+                <div id="ercharts3DivPlace">
+                    <div class="label">我司收入占比</div>
+                    <div class='erchartsplace' id="erchart3" style="height: 313px;width: 425px;"></div>
+                </div>
+                <div id="ercharts4DivPlace">
+                    <div class="label">我司支出占比</div>
+                    <div class='erchartsplace' id="erchart4"></div>
+                </div>
+                <div id="ercharts6DivPlace">
+                    <div class="label">我司未来收入推演</div>
+                    <div class='erchartsplace' id="erchart6"></div>
+                    <script>
+                        function showercharts6() {
+                            var chartDom = document.getElementById('erchart6');
+                            var myChart = echarts.init(chartDom);
+                            var option;
+
+// See https://github.com/ecomfe/echarts-stat
+                            echarts.registerTransform(ecStat.transform.regression);
+
+                            option = {
+                                dataset: [{
+                                    source: [
+                                        [28604, 77, 17096869, 'Australia', 2021],
+                                        [31163, 77.4, 27662440, 'Canada', 2021],
+                                        [1516, 68, 1154605773, 'China', 2021],
+                                        [13670, 74.7, 10582082, 'Cuba', 2021],
+                                        [28599, 75, 4986705, 'Finland', 2021],
+                                        [29476, 77.1, 56943299, 'France', 2021],
+                                        [31476, 75.4, 78958237, 'Germany', 2021],
+                                        [28666, 78.1, 254830, 'Iceland', 2021],
+                                        [1777, 57.7, 870601776, 'India', 2021],
+                                        [29550, 79.1, 122249285, 'Japan', 2021],
+                                        [2076, 67.9, 20194354, 'North Korea', 2021],
+                                        [12087, 72, 42972254, 'South Korea', 2021],
+                                        [24021, 75.4, 3397534, 'New Zealand', 2021],
+                                        [43296, 76.8, 4240375, 'Norway', 2021],
+                                        [10088, 70.8, 38195258, 'Poland', 2021],
+                                        [19349, 69.6, 147568552, 'Russia', 2021],
+                                        [10670, 67.3, 53994605, 'Turkey', 2021],
+                                        [26424, 75.7, 57110117, 'United Kingdom', 2021],
+                                        [37062, 75.4, 252847810, 'United States', 2021],
+                                        [44056, 81.8, 23968973, 'Australia', 2025],
+                                        [43294, 81.7, 35939927, 'Canada', 2025],
+                                        [13334, 76.9, 1376048943, 'China', 2025],
+                                        [21291, 78.5, 11389562, 'Cuba', 2025],
+                                        [38923, 80.8, 5503457, 'Finland', 2025],
+                                        [37599, 81.9, 64395345, 'France', 2025],
+                                        [44053, 81.1, 80688545, 'Germany', 2025],
+                                        [42182, 82.8, 329425, 'Iceland', 2025],
+                                        [5903, 66.8, 1311050527, 'India', 2025],
+                                        [36162, 83.5, 126573481, 'Japan', 2025],
+                                        [1390, 71.4, 25155317, 'North Korea', 2025],
+                                        [34644, 80.7, 50293439, 'South Korea', 2025],
+                                        [34186, 80.6, 4528526, 'New Zealand', 2025],
+                                        [64304, 81.6, 5210967, 'Norway', 2025],
+                                        [24787, 77.3, 38611794, 'Poland', 2025],
+                                        [23038, 73.13, 143456918, 'Russia', 2025],
+                                        [19360, 76.5, 78665830, 'Turkey', 2025],
+                                        [38225, 81.4, 64715810, 'United Kingdom', 2025],
+                                        [53354, 79.1, 321773631, 'United States', 2025]
+                                    ]
+                                }, {
+                                    transform: {
+                                        type: 'filter',
+                                        config: {dimension: 4, eq: 2021}
+                                    }
+                                }, {
+                                    transform: {
+                                        type: 'filter',
+                                        config: {dimension: 4, eq: 2025}
+                                    }
+                                }, {
+                                    transform: {
+                                        type: 'ecStat:regression',
+                                        config: {
+                                            method: 'logarithmic'
+                                        }
+                                    }
+                                }],
+                                title: {
+                                    text: 'The following year income line',
+                                    subtext: 'By JH.Tech',
+                                    sublink: '',
+                                    left: 'center'
+                                },
+                                legend: {
+                                    data: ['2021', '2025'],
+                                    bottom: 10
+                                },
+                                tooltip: {
+                                    trigger: 'axis',
+                                    axisPointer: {
+                                        type: 'cross'
+                                    }
+                                },
+                                xAxis: {
+                                    type: 'value',
+                                    splitLine: {
+                                        lineStyle: {
+                                            type: 'dashed'
+                                        }
+                                    },
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    splitLine: {
+                                        lineStyle: {
+                                            type: 'dashed'
+                                        }
+                                    },
+                                },
+                                visualMap: {
+                                    show: false,
+                                    dimension: 2,
+                                    min: 20000,
+                                    max: 1500000000,
+                                    seriesIndex: [0, 1],
+                                    inRange: {
+                                        symbolSize: [10, 70]
+                                    }
+                                },
+                                series: [{
+                                    name: '2021',
+                                    type: 'scatter',
+                                    datasetIndex: 1
+                                }, {
+                                    name: '2025',
+                                    type: 'scatter',
+                                    datasetIndex: 2
+                                }, {
+                                    name: 'line',
+                                    type: 'line',
+                                    smooth: true,
+                                    datasetIndex: 3,
+                                    symbolSize: 0.1,
+                                    symbol: 'circle',
+                                    label: {show: true, fontSize: 16},
+                                    labelLayout: {dx: -20},
+                                    encode: {label: 2, tooltip: 1}
+                                }]
+                            }
+
+                            option && myChart.setOption(option);
+                        }
+
+                        showercharts6();
+                    </script>
+                </div>
+                <div>
+                    <div class="label">智能化显示管理</div>
+                    <div class='ecManagePlace clearfix' id="ecManagePlace">
+                        <div>
+                            <label for="changoToDark">切换显示模式:</label>
+                            <button type="button" id="changoToDark" class="btn btn-dark">转至黑夜模式</button>
+                        </div>
+                        {#切换主题颜色脚本#}
+                        <script>
+                            $('#changoToDark').click(function () {
+                                var getchangeBGCBtn = $('#changoToDark')
+                                if (getchangeBGCBtn.text() == '转至黑夜模式') {
+                                    getchangeBGCBtn.text("转至白天模式");
+                                    getchangeBGCBtn.attr('class', 'btn btn-light');
+                                    $(document.body).css('background-color', 'rgb(69,71,78)');
+                                } else {
+                                    getchangeBGCBtn.text("转至黑夜模式");
+                                    getchangeBGCBtn.attr('class', 'btn btn-dark');
+                                    $(document.body).css('background-color', '#FFFFFF');
+                                }
+                            })
+                        </script>
+                        {#                        重新绘制收入#}
+                        <div>
+                            <label for="redrawTheIdepartECBtn">重新绘制收入占比图:</label>
+                            <button type="button" id="redrawTheIdepartECBtn" class="btn btn-dark">重新绘制</button>
+                            <script>
+                                //这里是收入占比的显示和刷新脚本
+                                function showercharts3(chartsdata) {
+                                    var chartDom = document.getElementById('erchart3');
+                                    var myChart = echarts.init(chartDom);
+                                    var option;
+
+                                    option = {
+                                        backgroundColor: '#2c343c',
+
+                                        title: {
+                                            text: '我司收入占比',
+                                            left: 'center',
+                                            top: 20,
+                                            textStyle: {
+                                                color: '#ccc'
+                                            }
+                                        },
+
+                                        tooltip: {
+                                            trigger: 'item'
+                                        },
+
+                                        visualMap: {
+                                            show: false,
+                                            min: 0,
+                                            max: chartsdata['Max'] + 1,
+                                            inRange: {
+                                                colorLightness: [0.35, 0.75]
+                                            }
+                                        },
+                                        series: [
+                                            {
+                                                name: '收入来源',
+                                                type: 'pie',
+                                                radius: '55%',
+                                                center: ['50%', '50%'],
+                                                data: [
+                                                    {
+                                                        value: parseFloat(chartsdata['strECOIsum0']),
+                                                        name: '自研项目'
+                                                    },
+                                                    {
+                                                        value: parseFloat(chartsdata['strECOIsum1']),
+                                                        name: '外方合作'
+                                                    },
+                                                    {
+                                                        value: parseFloat(chartsdata['strECOIsumsub1']),
+                                                        name: '其它'
+                                                    }
+                                                    {#{value: 235, name: '视频广告'},#}
+                                                    {#{value: 400, name: '搜索引擎'}#}
+                                                ].sort(function (a, b) {
+                                                    return a.value - b.value;
+                                                }),
+                                                roseType: 'radius',
+                                                label: {
+                                                    color: 'rgba(255, 255, 255, 0.3)'
+                                                },
+                                                labelLine: {
+                                                    lineStyle: {
+                                                        color: 'rgba(255, 255, 255, 0.3)'
+                                                    },
+                                                    smooth: 0.2,
+                                                    length: 10,
+                                                    length2: 20
+                                                },
+                                                itemStyle: {
+                                                    color: '#bd4f4c',
+                                                    shadowBlur: 200,
+                                                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                                },
+
+                                                animationType: 'scale',
+                                                animationEasing: 'elasticOut',
+                                                animationDelay: function (idx) {
+                                                    return Math.random() * 2000;
+                                                }
+                                            }
+                                        ]
+                                    };
+
+                                    option && myChart.setOption(option);
+
+                                }
+
+                                $.ajax({
+                                    url: '/getECOIO/',
+                                    type: 'post',
+                                    data: {},
+                                    success: function (data) {
+                                        var newdata = JSON.parse(data)
+                                        {#收入分类#}
+                                        var strECOIsumClassDetail = {
+                                            'strECOIsum0': newdata['ECOIsum0'],
+                                            'strECOIsum1': newdata['ECOIsum1'],
+                                            'strECOIsumsub1': newdata['ECOIsumsub1'],
+                                        }
+                                        var NumList = [strECOIsumClassDetail['strECOIsum0'],
+                                            strECOIsumClassDetail['strECOIsum1'], strECOIsumClassDetail['strECOIsumsub1']]
+                                        var getMax = NumList.sort((a, b) => {
+                                            return b - a;
+                                        })[0];
+                                        var getMin = NumList.sort((a, b) => {
+                                            return a - b;
+                                        })[0];
+                                        strECOIsumClassDetail['Max'] = getMax;
+                                        strECOIsumClassDetail['Min'] = getMin;
+                                        showercharts3(strECOIsumClassDetail);
+                                    }
+                                })
+
+                                $('#redrawTheIdepartECBtn').click(function () {
+                                    $.ajax({
+                                        url: '/getECOIO/',
+                                        type: 'post',
+                                        data: {},
+                                        success: function (data) {
+                                            var newdata = JSON.parse(data)
+                                            {#收入分类#}
+                                            var strECOIsumClassDetail = {
+                                                'strECOIsum0': newdata['ECOIsum0'],
+                                                'strECOIsum1': newdata['ECOIsum1'],
+                                                'strECOIsumsub1': newdata['ECOIsumsub1'],
+                                            }
+                                            var NumList = [strECOIsumClassDetail['strECOIsum0'],
+                                                strECOIsumClassDetail['strECOIsum1'], strECOIsumClassDetail['strECOIsumsub1']]
+                                            var getMax = NumList.sort((a, b) => {
+                                                return b - a;
+                                            })[0];
+                                            var getMin = NumList.sort((a, b) => {
+                                                return a - b;
+                                            })[0];
+                                            strECOIsumClassDetail['Max'] = getMax;
+                                            strECOIsumClassDetail['Min'] = getMin;
+                                            {#console.log(strECOIsumClassDetail)#}
+                                            var getercharts3 = document.getElementById('erchart3');
+                                            getercharts3.parentElement.removeChild(getercharts3.parentElement.children
+                                                [getercharts3.parentElement.children.length - 1])
+                                            var geterchart3div = document.getElementById('ercharts3DivPlace');
+                                            var newercharts3Node = document.createElement('div');
+                                            newercharts3Node.className = 'erchartsplace';
+                                            newercharts3Node.id = 'erchart3';
+                                            geterchart3div.appendChild(newercharts3Node)
+                                            showercharts3(strECOIsumClassDetail);
+
+                                        }
+                                    })
+                                })
+
+                            </script>
+                        </div>
+                        {#                        重新绘制支出#}
+                        <div>
+                            <label for="redrawTheOdepartECBtn">重新绘制支出占比图:</label>
+                            <button type="button" id="redrawTheOdepartECBtn" class="btn btn-dark">重新绘制</button>
+                            <script>
+                                //这里是支出占比的显示和刷新脚本
+                                function showercharts4(chartsdata) {
+                                    var chartDom = document.getElementById('erchart4');
+                                    var myChart = echarts.init(chartDom);
+                                    var option;
+
+                                    option = {
+                                        tooltip: {
+                                            trigger: 'item'
+                                        },
+                                        legend: {
+                                            top: '1%',
+                                            left: 'center'
+                                        },
+                                        series: [
+                                            {
+                                                name: '支出来源',
+                                                type: 'pie',
+                                                radius: ['35%', '65%'],
+                                                avoidLabelOverlap: false,
+                                                itemStyle: {
+                                                    borderRadius: 10,
+                                                    borderColor: '#fff',
+                                                    borderWidth: 2
+                                                },
+                                                label: {
+                                                    show: false,
+                                                    position: 'center'
+                                                },
+                                                emphasis: {
+                                                    label: {
+                                                        show: true,
+                                                        fontSize: '20',
+                                                        fontWeight: 'bold'
+                                                    }
+                                                },
+                                                labelLine: {
+                                                    show: false
+                                                },
+                                                data: [
+                                                    {value: chartsdata['strECOOsum0'], name: '自研项目'},
+                                                    {value: chartsdata['strECOOsum1'], name: '外方合作'},
+                                                    {value: chartsdata['strECOOsum2'], name: '人员工资'},
+                                                    {value: chartsdata['strECOOsum3'], name: '税务支出'},
+                                                    {value: chartsdata['strECOOsum4'], name: '宣传支出'},
+                                                    {value: chartsdata['strECOOsum5'], name: '员工开销'},
+                                                    {value: chartsdata['strECOOsumsub1'], name: '其它'},
+                                                ]
+                                            }
+                                        ]
+                                    };
+
+                                    option && myChart.setOption(option);
+
+
+                                }
+
+                                $.ajax({
+                                    url: '/getECOIO/',
+                                    type: 'post',
+                                    data: {},
+                                    success: function (data) {
+                                        var newdata = JSON.parse(data)
+                                        {#支出分类#}
+                                        var strECOOsumClassDetail = {
+                                            'strECOOsum0': newdata['ECOOsum0'],
+                                            'strECOOsum1': newdata['ECOOsum1'],
+                                            'strECOOsum2': newdata['ECOOsum2'],
+                                            'strECOOsum3': newdata['ECOOsum3'],
+                                            'strECOOsum4': newdata['ECOOsum4'],
+                                            'strECOOsum5': newdata['ECOOsum5'],
+                                            'strECOOsumsub1': newdata['ECOOsumsub1'],
+                                        }
+                                        showercharts4(strECOOsumClassDetail);
+                                    }
+                                })
+
+                                $('#redrawTheOdepartECBtn').click(function () {
+                                    $.ajax({
+                                        url: '/getECOIO/',
+                                        type: 'post',
+                                        data: {},
+                                        success: function (data) {
+                                            var newdata = JSON.parse(data)
+                                            {#支出分类#}
+                                            var strECOOsumClassDetail = {
+                                                'strECOOsum0': newdata['ECOOsum0'],
+                                                'strECOOsum1': newdata['ECOOsum1'],
+                                                'strECOOsum2': newdata['ECOOsum2'],
+                                                'strECOOsum3': newdata['ECOOsum3'],
+                                                'strECOOsum4': newdata['ECOOsum4'],
+                                                'strECOOsum5': newdata['ECOOsum5'],
+                                                'strECOOsumsub1': newdata['ECOOsumsub1'],
+                                            }
+                                            {#console.log(strECOIsumClassDetail)#}
+                                            var getercharts4 = document.getElementById('erchart4');
+                                            getercharts4.parentElement.removeChild(getercharts4.parentElement.children
+                                                [getercharts4.parentElement.children.length - 1])
+                                            var geterchart4div = document.getElementById('ercharts4DivPlace');
+                                            var newercharts4Node = document.createElement('div');
+                                            newercharts4Node.className = 'erchartsplace';
+                                            newercharts4Node.id = 'erchart4';
+                                            geterchart4div.appendChild(newercharts4Node)
+                                            showercharts4(strECOOsumClassDetail);
+
+                                        }
+                                    })
+                                })
+                            </script>
+                        </div>
+
+                        <div>
+                            <label for="redrawTheFuturnECBtn">重新绘制收入推演图:</label>
+                            <button type="button" id="redrawTheFuturnECBtn" class="btn btn-dark">重新推演</button>
+                            <script>
+
+                            </script>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        {# 通知模块#}
+        <div index="infoPlate" id="infoPlatepart" class="infoPlatepart">
+            <div class="label">通知</div>
+            <div class="content">
+                <div class="infoPart">
+                    <div class="Textcontent">
+                        <div id="InfoPlace" style="height:100%;overflow-y:auto">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="departLine"></div>
+                <div class="sendPlace clearfix">
+                    <div class="sendInfoPlace">
+                        <textarea name="inputInfoarea" id="inputInfoarea"
+                                  class="form-control inputInfoarea"></textarea>
+                    </div>
+                    <div class=" sendInfoBtnPlace">
+                        <button id="allclearBtn" class="btn btn-info">清除所有消息</button>
+                        <button id="showNewInfoBtn" class="btn btn-success">ShowMeInfo</button>
+                        <button id="sendInfoBtn" class="btn btn-success">SendMessage</button>
+                    </div>
+                </div>
+
+                {# 清楚所有消息的脚本 #}
+                <script>
+                    $('#allclearBtn').click(function () {
+                        $('#InfoPlace').children().remove();
+                    })
+                </script>
+
+                {#                显示最新的消息通知按钮的脚本#}
+                <script>
+                    $('#showNewInfoBtn').click(function () {
+                        $.ajax({
+                            url: '/showMeNewInfo/',
+                            type: 'post',
+                            data: {},
+                            success: function (data) {
+                                var newdata = JSON.parse(data);
+                                for (let i = 0; i < newdata.length; i++) {
+                                    var getInfoPlace = document.getElementById('InfoPlace');
+                                    var newDivNodePlace = document.createElement('div');
+                                    newDivNodePlace.className = 'TextdivNodeCss';
+                                    var newTextdivNode = document.createElement('div');
+                                    newTextdivNode.style.margin = '10px 0';
+                                    newTextdivNode.style.border = '1px solid rgba(0,0,0,0.1)';
+                                    newTextdivNode.style.borderRadius = '3px';
+                                    newTextdivNode.style.padding = '5px 5px';
+                                    newTextdivNode.innerText = '全体通知:' + newdata[i][0];
+                                    var newActionNode = document.createElement('div');
+                                    var newbutton = document.createElement('button');
+                                    newActionNode.style.textAlign = 'right';
+                                    newActionNode.style.height = '50px';
+                                    newbutton.className = 'btn btn-success';
+                                    newbutton.innerText = '删除这条消息';
+                                    newbutton.style.margin = '10px 0px';
+                                    newbutton.style.fontSize = '15px';
+                                    newbutton.addEventListener('click', function () {
+                                        //通过嵌套来删除自身的方式
+                                        this.parentElement.parentElement.parentElement.removeChild
+                                        (this.parentElement.parentElement);
+                                    })
+                                    var newdateshowdiv = document.createElement('div');
+                                    newdateshowdiv.style.float = 'left';
+                                    newdateshowdiv.style.margin = '5px 0';
+                                    newdateshowdiv.style.color = '#E3ABABFF';
+                                    newdateshowdiv.style.fontSize = '15px';
+                                    newdateshowdiv.style.height = '50px';
+                                    newdateshowdiv.style.lineHeight = '50px';
+                                    let dateStr = '发布时间:' + newdata[i][2];
+                                    newdateshowdiv.innerText = dateStr;
+                                    var newWriterShowdiv = document.createElement('div');
+                                    newWriterShowdiv.style.float = 'left';
+                                    newWriterShowdiv.style.margin = '5px 10px';
+                                    newWriterShowdiv.style.color = '#6d758d';
+                                    newWriterShowdiv.style.fontSize = '15px';
+                                    newWriterShowdiv.style.height = '50px';
+                                    newWriterShowdiv.style.lineHeight = '50px';
+                                    newWriterShowdiv.innerText = '发布来自:' + newdata[i][1];
+                                    newActionNode.appendChild(newdateshowdiv);
+                                    newActionNode.appendChild(newWriterShowdiv);
+                                    newActionNode.appendChild(newbutton);
+                                    newDivNodePlace.appendChild(newTextdivNode);
+                                    newDivNodePlace.appendChild(newActionNode);
+                                    getInfoPlace.appendChild(newDivNodePlace);
+                                }
+
+                            }
+
+                        })
+                    })
+                </script>
+
+                {#                这是发送消息按钮的脚本#}
+                <script>
+                    //这里设置了管理员按发送按钮的方法
+                    //判定权限次数位
+                    var PvTag = 0;
+                    var getSendBtn = document.getElementById('sendInfoBtn');
+
+                    function UpdataInfoAction() {
+                        var getInfoPlace = document.getElementById('InfoPlace');
+                        var getInputInfoArea = document.getElementById('inputInfoarea');
+
+                        if (getInputInfoArea.value == '') {
+                            alert('请输入内容，再发送！');
+                        } else {
+                            var newDivNodePlace = document.createElement('div');
+                            newDivNodePlace.className = 'TextdivNodeCss';
+                            var newTextdivNode = document.createElement('div');
+                            newTextdivNode.style.margin = '10px 0';
+                            newTextdivNode.style.border = '1px solid rgba(0,0,0,0.1)';
+                            newTextdivNode.style.borderRadius = '3px';
+                            newTextdivNode.style.padding = '5px 5px';
+                            newTextdivNode.innerText = '全体通知:' + getInputInfoArea.value;
+                            var newActionNode = document.createElement('div');
+                            var newbutton = document.createElement('button');
+                            newActionNode.style.textAlign = 'right';
+                            newActionNode.style.height = '50px';
+                            newbutton.className = 'btn btn-success';
+                            newbutton.innerText = '删除这条消息';
+                            newbutton.style.margin = '10px 0px';
+                            newbutton.style.fontSize = '15px';
+                            newbutton.addEventListener('click', function () {
+                                //通过嵌套来删除自身的方式
+                                this.parentElement.parentElement.parentElement.removeChild(this.parentElement.parentElement);
+                            })
+                            var newdateshowdiv = document.createElement('div');
+                            newdateshowdiv.style.float = 'left';
+                            newdateshowdiv.style.margin = '5px 0';
+                            newdateshowdiv.style.color = '#E3ABABFF';
+                            newdateshowdiv.style.fontSize = '15px';
+                            newdateshowdiv.style.height = '50px';
+                            newdateshowdiv.style.lineHeight = '50px';
+                            let date = new Date();
+                            date = getdate(date);
+                            let dateStr = '发布时间:' + date;
+                            newdateshowdiv.innerText = dateStr;
+                            var newWriterShowdiv = document.createElement('div');
+                            newWriterShowdiv.style.float = 'left';
+                            newWriterShowdiv.style.margin = '5px 10px';
+                            newWriterShowdiv.style.color = '#6d758d';
+                            newWriterShowdiv.style.fontSize = '15px';
+                            newWriterShowdiv.style.height = '50px';
+                            newWriterShowdiv.style.lineHeight = '50px';
+                            newWriterShowdiv.innerText = '发布来自:' + '{{ username }}';
+                            newActionNode.appendChild(newdateshowdiv);
+                            newActionNode.appendChild(newWriterShowdiv);
+                            newActionNode.appendChild(newbutton);
+                            newDivNodePlace.appendChild(newTextdivNode);
+                            newDivNodePlace.appendChild(newActionNode);
+                            //以上部分完成了消息框的构成
+
+                            //总消息量不超过20条
+                            if (getInfoPlace.children.length >= 20) {
+                                getInfoPlace.removeChild(getInfoPlace.children[0]);
+                                getInfoPlace.appendChild(newDivNodePlace);
+                                alert('由于消息条数限制，过早的消息已被清楚！')
+                            } else {
+                                getInfoPlace.appendChild(newDivNodePlace);
+                            }
+
+                            //实现数据库同步消息内容
+                            $.ajax({
+                                url: '/InfoUpdate/',
+                                type: 'post',
+                                data: {
+                                    'TextContent': getInputInfoArea.value,
+                                    'writername': '{{ username }}',
+                                    'writedate': date
+                                },
+                                success: function (data) {
+                                    var newData = JSON.parse(data)
+                                    if (newData['NewDataConfirmTag'] != 1) {
+
+                                        alert(newData['Message']);
+                                    } else {
+
+                                        var IsSure = confirm(newData['Message']);
+                                        if (IsSure) {
+                                            $.ajax({
+                                                url: '/SureInfoDataUpdate/',
+                                                type: 'post',
+                                                data: newData,
+                                                success: function (data) {
+                                                    let newData = JSON.parse(data)
+                                                    alert(newData['Message'])
+                                                }
+                                            })
+                                        } else {
+                                            alert('已取消同步！')
+                                        }
+                                    }
+
+
+                                }
+                            })
+
+                        }
+                    }
+
+                    getSendBtn.onclick = function () {
+                        $.ajax({
+                            url: '/getAuthority/',
+                            type: 'post',
+                            data: {
+                                'username': '{{ username }}',
+                            },
+                            success: function (data) {
+                                var newdata = JSON.parse(data)
+
+
+                                if (newdata['adminFlag'] == 0) {
+                                    $(document.body).attr("disabled", "disabled");
+                                    alert(newdata['Message'])
+
+                                } else if (newdata['adminFlag'] == -1) {
+                                    $('#sendInfoBtn').attr("disabled", "disabled");
+                                    $('#inputInfoarea').attr("disabled", "disabled");
+                                    alert(newdata['Message'])
+
+                                } else if (newdata['adminFlag'] == 1) {
+                                    if (PvTag == 0) {
+                                        PvTag = 1;
+                                        alert(newdata['Message']);
+                                        UpdataInfoAction();
+                                    } else {
+                                        UpdataInfoAction();
+                                    }
+
+
+                                } else if (newdata['adminFlag'] == 2) {
+                                    if (PvTag == 0) {
+                                        PvTag = 1;
+                                        alert(newdata['Message']);
+                                        UpdataInfoAction();
+                                    } else {
+                                        UpdataInfoAction();
+                                    }
+                                }
+                            }
+                        })
+
+                    }
+
+                    //这里我们判定权限是否可以进行编写发送功能
+
+
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        var rowbox = document.getElementById('rowbox');
+        var contentBox = document.getElementById('contentbox');
+        var actionChoice = rowbox.getElementsByTagName('a');
+        var contentDivPart = contentBox.children;
+
+        for (var i = 0; i < contentDivPart.length; i++) {
+            if (i != 0) {
+                contentDivPart[i].style.float = "left";
+                contentDivPart[i].style.display = 'none';
+            }
+        }
+        for (var i = 0; i < actionChoice.length; i++) {
+            actionChoice[i].onmouseover = function () {
+                var getIdIndex = this.getAttribute('id');
+                var contentDiv = contentBox.children;
+                for (var j = 0; j < contentDiv.length; j++) {
+                    contentDiv[j].style.display = 'none';
+                }
+                for (var j = 0; j < contentDiv.length; j++) {
+                    var getIndex = contentDiv[j].getAttribute('index');
+                    if (getIdIndex == getIndex) {
+                        contentDiv[j].removeAttribute('style');
+                        {#contentDiv[j].removeAttribute('class');#}
+                        contentDiv[j].style.display = 'block';
+                    }
+                }
+
+
+            }
+        }
+
+        {#for (var i = 0; i < ; i++) {#}
+        {#    #}
+
+        {#actionChoice.onmouseover = function () {#}
+        {#    console.log(actionChoice);#}
+
+
+    </script>
+</div>
+<div class="footerdiv1" style="text-align: right;">
+    <div class="fd1div1">
+        <label class="aboutme"><a href="javascript:;">关于我们</a></label>
+        <label class="contactme"><a href="javascript:;">联系我们</a></label>
+        <label style=" line-height: 30px;color: dimgray;font-size: 10px;padding-right: 30px;">简颢科技 @版权所有</label>
+
+    </div>
+</div>
 </body>
 </html>

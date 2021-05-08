@@ -1,0 +1,604 @@
+/*全局*/
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 1050px;
+    min-width: 1785px;
+}
+
+a {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/*全局*/
+/*———————————————————————————————————————————下面属于ShowYourInfo的特殊样式———————————————————————————————————————*/
+.linkpart {
+    float: left;
+    padding-right: 10px;
+    color: rgb(195, 246, 246);
+}
+
+.linkpart .welcomelabel {
+    float: left;
+    line-height: 40px;
+
+}
+
+.linkpart .usernamelabel {
+    float: left;
+    padding: 0 5px;
+    color: bisque;
+    font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 40px;
+}
+
+.box {
+    width: 1255px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.box .rowbox {
+    float: left;
+    margin-left: 50px;
+    height: 300px;
+    width: 200px;
+    background-color: rgba(159, 157, 157, 1);
+    padding: 0;
+    font-size: 15px;
+}
+
+.box .rowbox a {
+    display: block;
+    height: 60px;
+    width: 200px;
+    padding-left: 24px;
+    line-height: 60px;
+    color: white;
+}
+
+.box .rowbox a:hover {
+    background-color: #FF6700;
+}
+
+.box .contentbox {
+    float: left;
+    width: 950px;
+    /*padding: 0 25px;*/
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 30px;
+    border: 1px solid rgb(234, 234, 234);
+    border-radius: 5px;
+    box-shadow: 0px 5px 15px 5px rgba(128, 128, 128, 0.4);
+
+}
+
+/*.box .contentbox div{*/
+/*    text-align: center;*/
+/*}*/
+
+.box .contentbox .FirstPage {
+    height: 500px;
+}
+
+.box .contentbox .FirstPage div {
+    height: 100%;
+    background: no-repeat url("/static/pic1.jpg");
+    background-size: 100% 100%;
+    line-height: 500px;
+    text-align: center;
+    font-size: 50px;
+    color: #abc3c3;
+    font-family: 'STHeiti Light';
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.49);
+}
+
+.box .contentbox .memberDataTakePart {
+    width: 100%;
+}
+
+.box .contentbox .memberDataTakePart > div {
+    text-align: center;
+    height: 50px;
+    /*background-color: #ad9191;*/
+    line-height: 50px;
+    color: #85b4b4;
+    font-size: 30px;
+    font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.memberInfoForm {
+    margin-top: 5px;
+}
+
+.memberInfoForm label {
+    float: left;
+    line-height: 36px;
+    margin-left: 5px;
+}
+
+.memberInfoForm input {
+    float: left;
+    margin-left: 5px;
+
+}
+
+.memberInfoForm select {
+    float: left;
+    margin-left: 5px;
+}
+
+.memberInfoForm .secendPart input {
+    width: auto;
+    margin-top: 12px;
+}
+
+.box .contentbox .ComECOpart > .label {
+    text-align: center;
+    height: 50px;
+    /*background-color: #ad9191;*/
+    line-height: 50px;
+    color: #85b4b4;
+    font-size: 30px;
+    font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box .contentbox .ComECOpart .content > div {
+    float: left;
+    height: 300px;
+    width: 217px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background-color: rgba(186, 185, 185, 0.1);
+}
+
+.box .contentbox .ComECOpart .content > div:hover {
+    box-shadow: 0px 5px 15px 5px rgba(128, 128, 128, 0.4);
+}
+
+.comEClabel {
+    text-align: center;
+    color: #85b4b4;
+    border-radius: 5px;
+    text-shadow: 2px 2px 3px rgba(128, 128, 128, 0.4);
+    box-shadow: 0px 5px 5px 1px rgba(128, 128, 128, 0.4);
+    margin-top: 2px;
+    height: 50px;
+    line-height: 50px;
+
+
+}
+
+.EIDivCSS {
+    margin: 50px auto;
+    height: 50px;
+    width: 90%;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+
+    background-color: rgba(252, 218, 218, 0.38);
+
+}
+
+.EIDivCSS:hover {
+    box-shadow: 0px 0px 5px 5px rgb(250, 189, 97);
+}
+
+.EIDivCSS2 {
+    margin: 95px auto;
+    height: 50px;
+    width: 90%;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(252, 218, 218, 0.38);
+
+}
+
+.EIDivCSS2:hover {
+    box-shadow: 0px 0px 5px 5px rgb(250, 189, 97);
+}
+
+.EIDivLabel {
+    float: left;
+    margin: 0 5px;
+    font-family: "YouYuan";
+    font-weight: bold;
+    color: rgba(10, 10, 10, 0.51);
+
+}
+
+.EIDivData {
+    float: left;
+    color: red;
+    font-family: "Segoe UI";
+    /*background-color: #6ebaa4;*/
+}
+
+.EODivCSS {
+    margin: 50px auto;
+    height: 50px;
+    width: 90%;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(217, 252, 106, 0.47);
+
+}
+
+
+.EODivCSS:hover {
+    box-shadow: 0px 0px 5px 5px rgb(250, 189, 97);
+}
+
+.EODivCSS2 {
+    margin: 95px auto;
+    height: 50px;
+    width: 90%;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgba(217, 252, 106, 0.47);
+
+}
+
+.EODivCSS2:hover {
+    box-shadow: 0px 0px 5px 5px rgb(255, 156, 2);
+}
+
+.EODivLabel {
+    float: left;
+    margin: 0 5px;
+    font-family: "YouYuan";
+    font-weight: bold;
+    color: rgba(10, 10, 10, 0.51);
+
+}
+
+.EODivData {
+    float: left;
+    color: red;
+    font-family: "Segoe UI";
+    /*background-color: #6ebaa4;*/
+}
+
+.DiyLabel {
+    color: #67936b;
+    height: 25px;
+    line-height: 20px;
+    margin-left: 10px;
+}
+
+.box .contentbox .marketECOpart > .label {
+    text-align: center;
+    height: 50px;
+    /*background-color: #ad9191;*/
+    line-height: 50px;
+    color: #85b4b4;
+    font-size: 30px;
+    font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box .contentbox .marketECOpart .content {
+
+}
+
+.box .contentbox .marketECOpart .content #bigBtn {
+    /*display: inline-block;*/
+    width: 90%;
+    height: 400px;
+    /*background-color: #575656;*/
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 35px auto;
+}
+
+.box .contentbox .marketECOpart .content #marketInfoForm {
+    /*display: inline-block;*/
+    width: 90%;
+    height: 200px;
+    /*background-color: #575656;*/
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 35px auto;
+}
+
+.box .contentbox .marketECOpart .content .bigBtn:hover {
+    box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.35);
+}
+
+.box .contentbox .marketECOpart .content #bigBtn > .ChartLabel {
+    height: 10%;
+    line-height: 35px;
+    text-align: center;
+    text-shadow: 2px 2px 2px #dea3a3;
+    color: #b34545;
+    font-size: 20px;
+    font-family: YouYuan;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #e3dcb4;
+}
+
+.box .contentbox .marketECOpart .content #bigBtn > #ercharts1 {
+    border-radius: 3px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box .contentbox .marketECOpart .content #marketInfoForm .Productionform label {
+    float: left;
+    margin: 10px 5px;
+    font-weight: bold;
+    line-height: 35px;
+    color: #628d94;
+    font-family: YouYuan;
+}
+
+.box .contentbox .marketECOpart .content #marketInfoForm .Productionform {
+    position: relative;
+}
+
+.box .contentbox .marketECOpart .content #marketInfoForm .Productionform input {
+    float: left;
+    width: 20%;
+    margin: 10px 5px;
+
+}
+
+.box .contentbox .marketECOpart .content #marketInfoForm .Productionform .btnPlace {
+    position: absolute;
+    bottom: -15px;
+    right: 30px;
+}
+
+.box .contentbox .marketECOpart .content .UpdataPDErchartBtn {
+    text-align: right;
+}
+
+.box .contentbox .marketECOpart .content .UpdataPDErchartBtn #UPDErchartBtn {
+    margin: 1% 1%;
+}
+
+.box .contentbox .VTDataPart > .label {
+    text-align: center;
+    height: 50px;
+    /*background-color: #ad9191;*/
+    line-height: 50px;
+    color: #85b4b4;
+    font-size: 30px;
+    font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box .contentbox .VTDataPart .content {
+    border-radius: 10px;
+    background-color: rgba(236, 236, 236, 0.1);
+}
+
+.box .contentbox .VTDataPart .content > div {
+    float: left;
+    margin: 1.5% 2.5%;
+    width: 45%;
+    height: 350px;
+    border: 1px solid #85b4b4;
+}
+
+.box .contentbox .VTDataPart .content > div > .label {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    font-family: 'YouYuan';
+    font-weight: bold;
+    background-color: rgba(133, 180, 180, 0.15);
+    color: rgba(255, 103, 0, 0.65);
+}
+
+.box .contentbox .VTDataPart .content > div > .erchartsplace {
+    text-align: center;
+    height: 313px;
+    width: 425px;
+}
+
+.box .contentbox .VTDataPart .content > div > ecManagePlace {
+
+}
+
+.box .contentbox .VTDataPart .content > div > .ecManagePlace > div > label {
+    margin: 5px 5px;
+    font-weight: bold;
+    font-family: YouYuan;
+    color: #67936b;
+
+}
+
+.box .contentbox .VTDataPart .content > div > .ecManagePlace > div > button {
+    margin: 10px 0;
+}
+
+
+.box .contentbox .infoPlatepart > .label {
+    text-align: center;
+    height: 50px;
+    /*background-color: #ad9191;*/
+    line-height: 50px;
+    color: #85b4b4;
+    font-size: 30px;
+    font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box .contentbox .infoPlatepart > .content > .departLine {
+    width: 95%;
+    height: 0px;
+    margin: 15px auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.box .contentbox .infoPlatepart > .content > .infoPart {
+    width: 95%;
+    height: 500px;
+    margin: 15px auto;
+    background-color: rgba(189, 187, 187, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+
+.box .contentbox .infoPlatepart > .content > .infoPart > .Textcontent {
+    height: 95%;
+    width: 95%;
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.TextdivNodeCss {
+    overflow-y: scroll;
+    text-align: left;
+    font-family: 'YouYuan';
+    font-size: 20px;
+    color: #67936b;
+    /*height: 100px;*/
+    /*line-height: 100px;*/
+    word-break: break-all;
+    width: 800px;
+    padding: 0 2.5%;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.25);
+    margin: 10px auto;
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace {
+    width: 95%;
+    height: 200px;
+    margin: 15px auto;
+    background-color: rgba(189, 187, 187, 0.1);
+    border-radius: 5px;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.25);
+
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace:hover {
+    box-shadow: 0 0 5px 5px rgba(54, 241, 48, 0.25);
+}
+
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoPlace {
+    float: left;
+    height: 100%;
+    width: 85%;
+    border-radius: 5px;
+
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoPlace > .inputInfoarea {
+    height: 85%;
+    width: 95%;
+    margin: 2.5% 2.5%;
+    resize: none;
+
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoPlace > .inputInfoarea:hover {
+    box-shadow: 0 0 3px 3px rgba(0, 191, 255, 0.1);
+
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoBtnPlace {
+
+    float: left;
+    height: 100%;
+    width: 15%;
+    border-radius: 5px;
+    text-align: right;
+    position: relative;
+
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoBtnPlace > #allclearBtn {
+    position: absolute;
+    bottom: 30%;
+    right: 11%;
+}
+
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoBtnPlace > #showNewInfoBtn {
+    position: absolute;
+    bottom: 55%;
+    right: 16%;
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoBtnPlace > #sendInfoBtn {
+    position: absolute;
+    bottom: 6%;
+    right: 10%;
+}
+
+.box .contentbox .infoPlatepart > .content > .sendPlace > .sendInfoBtnPlace > .btn:hover {
+    box-shadow: 0 0 3px 3px rgba(0, 191, 255, 0.35);
+}
+
+.footerdiv1 {
+    position: absolute;
+    height: 40px;
+    width: 100%;
+    z-index: 302;
+    bottom: 0;
+    margin: 0 auto;
+    line-height: 40px;
+
+}
+
+.footerdiv1 .fd1div1 {
+    margin: 0 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.aboutme {
+    float: left;
+    padding-left: 20px;
+    line-height: 40px;
+    color: #323232;
+    font-size: 13px;
+}
+
+.contactme {
+    float: left;
+    padding-left: 20px;
+    line-height: 40px;
+    color: #323232;
+    font-size: 13px;
+}

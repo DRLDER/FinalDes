@@ -1,38 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>简颢科技管理系统</title>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
-            integrity="sha384-gRC4eoaRyQ8xv2X6Mnf+eOIrtON3wId3dAkwO0HQX26OrFBoLpjX/XWOJacSiZhL"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/mycsslist.css">
 </head>
 <body>
-<style>
-    .boxsize {
-        width: 300px;
-        height: 100%;
-        text-align: left;
-        padding: 35px 35px 35px 35px;
-    }
-
-    .wordfontchange {
-        font-family: "Bitstream Vera Sans Mono", "Microsoft YaHei UI", Monaco, "Courier New", Courier, monospace;
-    }
-
-    .showitarea {
-        background-color: aquamarine;
-    }
-</style>
 <!-- Image and text -->
 {#导航栏#}
 <nav class="navbar navbar-dark bg-dark">
@@ -41,41 +20,104 @@
         <strong class="wordfontchange"><span>简颢科技管理系统</span></strong>
     </a>
 </nav>
+{#登录表单及轮播区域#}
+<div class="FormAndOic clearfix">
+    {#    图片或轮播区域#}
+    <div class="imgplace">
+        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-interval="2000">
+                    <img src="/static/pic1.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                    <img src="/static/pic2.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item" data-interval="2000">
+                    <img src="/static/pic3.jpg" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="formlistplace">
+        <div class="loginlabel">简颢科技登录入口</div>
+        {#表单块区#}
+        <div>
+            <form action="/testNamePass/" method="post" class="form1">
+                {% csrf_token %}
+                {#        用户名输入框及标签#}
+                <div class="form-group">
+                    <strong><label for="usernametext" class="wordfontchange">Username</label></strong>
+                    <input type="text" class="form-control" id="usernametext" name="username">
+                    <small id="usernameHelp" class="form-text text-muted">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
+                             class="bi bi-umbrella" viewBox="0 0 16 16">
+                            <path d="M8 0a.5.5 0 0 1 .5.5v.514C12.625 1.238 16 4.22 16 8c0 0 0 .5-.5.5-.149 0-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394A3.166 3.166 0 0 0 13 7.5c-.638 0-1.178.213-1.564.434a3.484 3.484 0 0 0-.555.394l-.025.023-.003.003s-.204.146-.353.146-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394 3.3 3.3 0 0 0-1.064-.39V13.5H8h.5v.039l-.005.083a2.958 2.958 0 0 1-.298 1.102 2.257 2.257 0 0 1-.763.88C7.06 15.851 6.587 16 6 16s-1.061-.148-1.434-.396a2.255 2.255 0 0 1-.763-.88 2.958 2.958 0 0 1-.302-1.185v-.025l-.001-.009v-.003s0-.002.5-.002h-.5V13a.5.5 0 0 1 1 0v.506l.003.044a1.958 1.958 0 0 0 .195.726c.095.191.23.367.423.495.19.127.466.229.879.229s.689-.102.879-.229c.193-.128.328-.304.424-.495a1.958 1.958 0 0 0 .197-.77V7.544a3.3 3.3 0 0 0-1.064.39 3.482 3.482 0 0 0-.58.417l-.004.004S5.65 8.5 5.5 8.5c-.149 0-.352-.145-.352-.145l-.004-.004a3.482 3.482 0 0 0-.58-.417A3.166 3.166 0 0 0 3 7.5c-.638 0-1.177.213-1.564.434a3.482 3.482 0 0 0-.58.417l-.004.004S.65 8.5.5 8.5C0 8.5 0 8 0 8c0-3.78 3.375-6.762 7.5-6.986V.5A.5.5 0 0 1 8 0zM6.577 2.123c-2.833.5-4.99 2.458-5.474 4.854A4.124 4.124 0 0 1 3 6.5c.806 0 1.48.25 1.962.511a9.706 9.706 0 0 1 .344-2.358c.242-.868.64-1.765 1.271-2.53zm-.615 4.93A4.16 4.16 0 0 1 8 6.5a4.16 4.16 0 0 1 2.038.553 8.688 8.688 0 0 0-.307-2.13C9.434 3.858 8.898 2.83 8 2.117c-.898.712-1.434 1.74-1.731 2.804a8.687 8.687 0 0 0-.307 2.131zm3.46-4.93c.631.765 1.03 1.662 1.272 2.53.233.833.328 1.66.344 2.358A4.14 4.14 0 0 1 13 6.5c.77 0 1.42.23 1.897.477-.484-2.396-2.641-4.355-5.474-4.854z"/>
+                        </svg>
+                        您的信息我们将会保密。</small>
+                </div>
+                {#        密码输入框及标签#}
+                <div class="form-group">
+                    <strong><label for="userpasstext" class="wordfontchange">Password</label></strong>
+                    <input type="password" class="form-control" id="userpasstext" name="password">
+                </div>
+                {#        分割区#}
+                <div class="form-group" style="padding-bottom: 20px">
+                </div>
+                {#        表单按钮#}
+                <div align="right">
+                    <button type="reset" class="btn btn-success">Reset</button>
+                    <span style="padding: 0px 0px 10px 10px"></span>
+                    <button type="submit" id="LoginBtn" class="btn btn-info">Login</button>
+                </div>
+                {#                判断用户名密码是否为空#}
+                <script>
+                    var getLoginBtn = document.getElementById('LoginBtn');
+                    var getUserName = document.querySelector('#usernametext');
+                    var getUserPass = document.querySelector('#userpasstext');
+                    getLoginBtn.addEventListener('click', function () {
+                        if (getUserName.value == "" || getUserPass.value == '') {
+                            alert('用户名或密码为空！');
+                        }
+                    })
+                </script>
+                {#                根据cookie实现判定账号密码的问题#}
+                <script>
+                    getUPerror = $.cookie('UPerror');
+                    if (getUPerror == 1) {
+                        alert('用户名不存在！');
+                    } else if (getUPerror == 2) {
+                        alert('密码有误！');
+                    } else {
+                        alert('欢迎您！');
+                    }
+                    window.onbeforeunload = function () {
+                        $.removeCookie('UPerror', {path: '/testNamePass'});
+                        $.removeCookie('UPerror', {path: '/'});
+                    }
+                </script>
 
-{#登录表单#}
-<div>
-    <p style="text-align: left"><img src="/static/JHOri.png" class="boxsize showitarea"></p>
-    <label class="boxsize showitarea" style="horiz-align: left">
-    <form action="info/" method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <strong><label for="usernametext" class="wordfontchange">Username</label></strong>
-            <input type="text" class="form-control" id="usernametext" name="username">
-            <small id="usernameHelp" class="form-text text-muted">
-                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
-                     class="bi bi-umbrella" viewBox="0 0 16 16">
-                    <path d="M8 0a.5.5 0 0 1 .5.5v.514C12.625 1.238 16 4.22 16 8c0 0 0 .5-.5.5-.149 0-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394A3.166 3.166 0 0 0 13 7.5c-.638 0-1.178.213-1.564.434a3.484 3.484 0 0 0-.555.394l-.025.023-.003.003s-.204.146-.353.146-.352-.145-.352-.145l-.004-.004-.025-.023a3.484 3.484 0 0 0-.555-.394 3.3 3.3 0 0 0-1.064-.39V13.5H8h.5v.039l-.005.083a2.958 2.958 0 0 1-.298 1.102 2.257 2.257 0 0 1-.763.88C7.06 15.851 6.587 16 6 16s-1.061-.148-1.434-.396a2.255 2.255 0 0 1-.763-.88 2.958 2.958 0 0 1-.302-1.185v-.025l-.001-.009v-.003s0-.002.5-.002h-.5V13a.5.5 0 0 1 1 0v.506l.003.044a1.958 1.958 0 0 0 .195.726c.095.191.23.367.423.495.19.127.466.229.879.229s.689-.102.879-.229c.193-.128.328-.304.424-.495a1.958 1.958 0 0 0 .197-.77V7.544a3.3 3.3 0 0 0-1.064.39 3.482 3.482 0 0 0-.58.417l-.004.004S5.65 8.5 5.5 8.5c-.149 0-.352-.145-.352-.145l-.004-.004a3.482 3.482 0 0 0-.58-.417A3.166 3.166 0 0 0 3 7.5c-.638 0-1.177.213-1.564.434a3.482 3.482 0 0 0-.58.417l-.004.004S.65 8.5.5 8.5C0 8.5 0 8 0 8c0-3.78 3.375-6.762 7.5-6.986V.5A.5.5 0 0 1 8 0zM6.577 2.123c-2.833.5-4.99 2.458-5.474 4.854A4.124 4.124 0 0 1 3 6.5c.806 0 1.48.25 1.962.511a9.706 9.706 0 0 1 .344-2.358c.242-.868.64-1.765 1.271-2.53zm-.615 4.93A4.16 4.16 0 0 1 8 6.5a4.16 4.16 0 0 1 2.038.553 8.688 8.688 0 0 0-.307-2.13C9.434 3.858 8.898 2.83 8 2.117c-.898.712-1.434 1.74-1.731 2.804a8.687 8.687 0 0 0-.307 2.131zm3.46-4.93c.631.765 1.03 1.662 1.272 2.53.233.833.328 1.66.344 2.358A4.14 4.14 0 0 1 13 6.5c.77 0 1.42.23 1.897.477-.484-2.396-2.641-4.355-5.474-4.854z"/>
-                </svg>
-                您的信息我们将会保密。</small>
+            </form>
         </div>
-        <div class="form-group">
-            <strong><label for="exampleInputPassword1" class="wordfontchange">Password</label></strong>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="password">
-        </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="RBmeBtn">
-            <label class="form-check-label" for="exampleCheck1">remember me</label>
-        </div>
-        <div align="right">
-            <button type="reset" class="btn btn-primary">Reset</button>
-            <span style="padding: 0px 0px 10px 10px"></span>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </div>
-
-    </form>
-    </label>
+    </div>
 </div>
 
+<div class="footerdiv1" style="text-align: right;">
+    <div class="fd1div1">
+        <label class="aboutme"><a href="javascript:;">关于我们</a></label>
+        <label class="contactme"><a href="javascript:;">联系我们</a></label>
+        <label style=" line-height: 30px;color: dimgray;font-size: 10px;padding-right: 30px;">简颢科技 @版权所有</label>
+
+    </div>
+
+</div>
 
 </body>
 </html>

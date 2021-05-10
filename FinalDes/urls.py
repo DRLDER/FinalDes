@@ -17,4 +17,5 @@ urlpatterns = [
     path('SureInfoDataUpdate/', SureInfoDataUpdate),
     path('showMeNewInfo/', showmenewInfo),
     path('getAuthority/', getAuthority),
+    path('getFutureInfo/', getFutureInfo),
 ]

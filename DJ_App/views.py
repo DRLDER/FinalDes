@@ -1,5 +1,6 @@
 import datetime
 import json
+import random
 
 from django.forms import model_to_dict
 from django.http import HttpResponse, JsonResponse
@@ -572,5 +573,20 @@ def getAuthority(request):
         else:
             newdata['adminFlag'] = 0
             newdata['Message'] = '您的行为是非法的！'
+
+    return HttpResponse(json.dumps(newdata))
+
+
+# 获取收入项目，预测用
+@csrf_exempt
+def getFutureInfo(request):
+    newdata = []
+    getECOIall = COMECIList.objects.all()
+    for i in range(0, len(getECOIall)):
+        datanode = []
+        # 生成随机数因子
+        datanode.append(random.random())
+        datanode.append(getECOIall[i].ProjectGot)
+        newdata.append(datanode)
 
     return HttpResponse(json.dumps(newdata))

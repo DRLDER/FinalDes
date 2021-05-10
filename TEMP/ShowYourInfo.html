@@ -808,143 +808,6 @@
                 <div id="ercharts6DivPlace">
                     <div class="label">我司未来收入推演</div>
                     <div class='erchartsplace' id="erchart6"></div>
-                    <script>
-                        function showercharts6() {
-                            var chartDom = document.getElementById('erchart6');
-                            var myChart = echarts.init(chartDom);
-                            var option;
-
-// See https://github.com/ecomfe/echarts-stat
-                            echarts.registerTransform(ecStat.transform.regression);
-
-                            option = {
-                                dataset: [{
-                                    source: [
-                                        [28604, 77, 17096869, 'Australia', 2021],
-                                        [31163, 77.4, 27662440, 'Canada', 2021],
-                                        [1516, 68, 1154605773, 'China', 2021],
-                                        [13670, 74.7, 10582082, 'Cuba', 2021],
-                                        [28599, 75, 4986705, 'Finland', 2021],
-                                        [29476, 77.1, 56943299, 'France', 2021],
-                                        [31476, 75.4, 78958237, 'Germany', 2021],
-                                        [28666, 78.1, 254830, 'Iceland', 2021],
-                                        [1777, 57.7, 870601776, 'India', 2021],
-                                        [29550, 79.1, 122249285, 'Japan', 2021],
-                                        [2076, 67.9, 20194354, 'North Korea', 2021],
-                                        [12087, 72, 42972254, 'South Korea', 2021],
-                                        [24021, 75.4, 3397534, 'New Zealand', 2021],
-                                        [43296, 76.8, 4240375, 'Norway', 2021],
-                                        [10088, 70.8, 38195258, 'Poland', 2021],
-                                        [19349, 69.6, 147568552, 'Russia', 2021],
-                                        [10670, 67.3, 53994605, 'Turkey', 2021],
-                                        [26424, 75.7, 57110117, 'United Kingdom', 2021],
-                                        [37062, 75.4, 252847810, 'United States', 2021],
-                                        [44056, 81.8, 23968973, 'Australia', 2025],
-                                        [43294, 81.7, 35939927, 'Canada', 2025],
-                                        [13334, 76.9, 1376048943, 'China', 2025],
-                                        [21291, 78.5, 11389562, 'Cuba', 2025],
-                                        [38923, 80.8, 5503457, 'Finland', 2025],
-                                        [37599, 81.9, 64395345, 'France', 2025],
-                                        [44053, 81.1, 80688545, 'Germany', 2025],
-                                        [42182, 82.8, 329425, 'Iceland', 2025],
-                                        [5903, 66.8, 1311050527, 'India', 2025],
-                                        [36162, 83.5, 126573481, 'Japan', 2025],
-                                        [1390, 71.4, 25155317, 'North Korea', 2025],
-                                        [34644, 80.7, 50293439, 'South Korea', 2025],
-                                        [34186, 80.6, 4528526, 'New Zealand', 2025],
-                                        [64304, 81.6, 5210967, 'Norway', 2025],
-                                        [24787, 77.3, 38611794, 'Poland', 2025],
-                                        [23038, 73.13, 143456918, 'Russia', 2025],
-                                        [19360, 76.5, 78665830, 'Turkey', 2025],
-                                        [38225, 81.4, 64715810, 'United Kingdom', 2025],
-                                        [53354, 79.1, 321773631, 'United States', 2025]
-                                    ]
-                                }, {
-                                    transform: {
-                                        type: 'filter',
-                                        config: {dimension: 4, eq: 2021}
-                                    }
-                                }, {
-                                    transform: {
-                                        type: 'filter',
-                                        config: {dimension: 4, eq: 2025}
-                                    }
-                                }, {
-                                    transform: {
-                                        type: 'ecStat:regression',
-                                        config: {
-                                            method: 'logarithmic'
-                                        }
-                                    }
-                                }],
-                                title: {
-                                    text: 'The following year income line',
-                                    subtext: 'By JH.Tech',
-                                    sublink: '',
-                                    left: 'center'
-                                },
-                                legend: {
-                                    data: ['2021', '2025'],
-                                    bottom: 10
-                                },
-                                tooltip: {
-                                    trigger: 'axis',
-                                    axisPointer: {
-                                        type: 'cross'
-                                    }
-                                },
-                                xAxis: {
-                                    type: 'value',
-                                    splitLine: {
-                                        lineStyle: {
-                                            type: 'dashed'
-                                        }
-                                    },
-                                },
-                                yAxis: {
-                                    type: 'value',
-                                    splitLine: {
-                                        lineStyle: {
-                                            type: 'dashed'
-                                        }
-                                    },
-                                },
-                                visualMap: {
-                                    show: false,
-                                    dimension: 2,
-                                    min: 20000,
-                                    max: 1500000000,
-                                    seriesIndex: [0, 1],
-                                    inRange: {
-                                        symbolSize: [10, 70]
-                                    }
-                                },
-                                series: [{
-                                    name: '2021',
-                                    type: 'scatter',
-                                    datasetIndex: 1
-                                }, {
-                                    name: '2025',
-                                    type: 'scatter',
-                                    datasetIndex: 2
-                                }, {
-                                    name: 'line',
-                                    type: 'line',
-                                    smooth: true,
-                                    datasetIndex: 3,
-                                    symbolSize: 0.1,
-                                    symbol: 'circle',
-                                    label: {show: true, fontSize: 16},
-                                    labelLayout: {dx: -20},
-                                    encode: {label: 2, tooltip: 1}
-                                }]
-                            }
-
-                            option && myChart.setOption(option);
-                        }
-
-                        showercharts6();
-                    </script>
                 </div>
                 <div>
                     <div class="label">智能化显示管理</div>
@@ -1244,7 +1107,115 @@
                             <label for="redrawTheFuturnECBtn">重新绘制收入推演图:</label>
                             <button type="button" id="redrawTheFuturnECBtn" class="btn btn-dark">重新推演</button>
                             <script>
+                                function showercharts6(getFuturedata) {
+                                    var chartDom = document.getElementById('erchart6');
+                                    var myChart = echarts.init(chartDom);
+                                    var option;
 
+                                    echarts.registerTransform(ecStat.transform.regression);
+                                    {#console.log(Math.random())#}
+                                    var data = [];
+                                    for (let i = 0; i < getFuturedata.length; i++) {
+                                        data.push(getFuturedata[i]);
+                                    }
+                                    {#console.log(typeof data)#}
+                                    {#console.log(getFuturedata[0]);#}
+                                    {##}
+                                    {#console.log(data);#}
+                                    {#console.log(typeof data)#}
+
+
+                                    option = {
+                                        dataset: [{
+                                            source: data
+                                        }, {
+                                            transform: {
+                                                type: 'ecStat:regression'
+                                                // 'linear' by default.
+                                                // config: { method: 'linear', formulaOn: 'end'}
+                                            }
+                                        }],
+                                        title: {
+                                            text: 'The Future Calculus',
+                                            subtext: 'By JH Tech',
+                                            {#sublink: 'javascript:;',#}
+                                            left: 'center'
+                                        },
+                                        legend: {
+                                            bottom: 5
+                                        },
+                                        tooltip: {
+                                            trigger: 'axis',
+                                            axisPointer: {
+                                                type: 'cross'
+                                            }
+                                        },
+                                        xAxis: {
+                                            splitLine: {
+                                                lineStyle: {
+                                                    type: 'dashed'
+                                                }
+                                            },
+                                        },
+                                        yAxis: {
+                                            splitLine: {
+                                                lineStyle: {
+                                                    type: 'dashed'
+                                                }
+                                            },
+                                        },
+                                        series: [{
+                                            name: 'scatter',
+                                            type: 'scatter'
+                                        }, {
+                                            name: 'line',
+                                            type: 'line',
+                                            datasetIndex: 1,
+                                            symbolSize: 0.1,
+                                            symbol: 'circle',
+                                            label: {show: true, fontSize: 16},
+                                            labelLayout: {dx: -20},
+                                            encode: {label: 2, tooltip: 1}
+                                        }]
+                                    };
+
+                                    option && myChart.setOption(option);
+                                }
+
+                                //这里是预测的显示和刷新脚本
+
+                                $.ajax({
+                                    url: '/getFutureInfo/',
+                                    type: 'post',
+                                    data: {},
+                                    success: function (data) {
+                                        var newdata = JSON.parse(data)
+                                        {#收入数据回收#}
+                                        {#console.log(newdata)#}
+                                        showercharts6(newdata);
+                                    }
+                                })
+
+                                $('#redrawTheFuturnECBtn').click(function () {
+                                    $.ajax({
+                                        url: '/getFutureInfo/',
+                                        type: 'post',
+                                        data: {},
+                                        success: function (data) {
+                                            var newdata = JSON.parse(data)
+                                            {#收入数据回收#}
+                                            var getercharts6 = document.getElementById('erchart6');
+                                            getercharts6.parentElement.removeChild(getercharts6.parentElement.children
+                                                [getercharts6.parentElement.children.length - 1])
+                                            var geterchart6div = document.getElementById('ercharts6DivPlace');
+                                            var newercharts6Node = document.createElement('div');
+                                            newercharts6Node.className = 'erchartsplace';
+                                            newercharts6Node.id = 'erchart6';
+                                            geterchart6div.appendChild(newercharts6Node)
+                                            showercharts6(newdata);
+                                        }
+                                    })
+                                })
                             </script>
                         </div>
                     </div>

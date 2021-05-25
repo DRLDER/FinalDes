@@ -129,9 +129,9 @@
                 </div>
                 <div class="secendPart clearfix">
                     <label class="wordfontchange">性别:</label>
-                    <input type="radio" id="sexmaleChoosePlace" name="sexChoose" checked="checked">
+                    <input type="radio" id="sexmaleChoosePlace" name="sexChoose" checked="checked" value="male">
                     <label class="wordfontchange" for="sexmaleChoosePlace">male</label>
-                    <input type="radio" id="sexfemaleChoosePlace" name="sexChoose">
+                    <input type="radio" id="sexfemaleChoosePlace" name="sexChoose" value="female">
                     <label class="wordfontchange" for="sexfemaleChoosePlace">female</label>
                     <label for="brithTextPlace" class="wordfontchange" style="margin-left: 22px;">出生年月:</label>
                     <input type="month" id="brithTextPlace" name="brithTextPlace" min="1930-01" value="1930-01"
@@ -188,7 +188,7 @@
                                     'nation': $('#nationTextPlace').val(),
                                     'NP': $('#NPTextPlace').val(),
                                     'birthplace': $('#brithPlaceTextPlace').val(),
-                                    'sex': $('#sexmaleChoosePlace').val(),
+                                    'sex': $('input[name="sexChoose"]:checked').val(),
                                     'birthday': $('#brithTextPlace').val(),
                                     'health': $('#HealthTextPlace').val(),
                                     'tel': $('#TelTextPlace').val(),
@@ -1118,13 +1118,6 @@
                                     for (let i = 0; i < getFuturedata.length; i++) {
                                         data.push(getFuturedata[i]);
                                     }
-                                    {#console.log(typeof data)#}
-                                    {#console.log(getFuturedata[0]);#}
-                                    {##}
-                                    {#console.log(data);#}
-                                    {#console.log(typeof data)#}
-
-
                                     option = {
                                         dataset: [{
                                             source: data

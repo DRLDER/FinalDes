@@ -50,6 +50,10 @@ def testNameandPass(request):
         resJump = render(request, 'ShowYourInfo.html', content)
         return resJump
 
+    if name == "" or passwd == "":
+        res = redirect('../')
+        res.set_cookie('UPerror', -1)
+        return res
     try:
         if user_date.objects.get(username=name):
             print("right username!")
@@ -92,6 +96,7 @@ def textMemInfo(request):
         'writername': request.session.get('userName'),
         'writedate': str(datetime.datetime.now())
     }
+    print(newdata['sex'])
     try:
         getDateObj = memInfoList.objects.get(writername=newdata['writername'])
         # getDateObjList= memInfoList.objects.filter(nation='蒙古族')
@@ -107,6 +112,7 @@ def textMemInfo(request):
                                   education=newdata['education'], expText=newdata['expText'],
                                   writername=newdata['writername'], writedate=newdata['writedate'])
         newDatalist.save()
+        #下面是对数据库更新的else部分
     else:
         print('查询到相关数据！')
         newdata['Message'] = "您的信息已更新！"
@@ -200,7 +206,7 @@ def ECOOFormUpdate(request):
                                  ProjectClass=newdata['projectClass'])
         newDatalist.save()
         return HttpResponse(json.dumps(newdata))
-
+    #修改数据库部分，其中包含原数据库信息不便展示
     else:
         print('这是一个已经产生的支出项目')
         newdata['Message'] = '这是一个已经产生的支出项目，我们已实现更新！'

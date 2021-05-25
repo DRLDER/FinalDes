@@ -14,7 +14,7 @@ class memInfoList(models.Model):
     nation = models.CharField(max_length=20, null=False)
     NP = models.CharField(max_length=20, null=False)
     birthplace = models.CharField(max_length=30, null=False)
-    sex = models.CharField(max_length=4, null=False)
+    sex = models.CharField(max_length=10, null=False)
     birthday = models.CharField(max_length=30, null=False)
     health = models.CharField(max_length=10, null=False)
     tel = models.CharField(max_length=20, null=False)

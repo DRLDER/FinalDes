@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'f+*o6y%zqc=finhyd)#abn!yc2xmx%x5eg4zcaumn7=+=d4j^$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -118,7 +118,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+# 设置服务器前端文件路径识别
+STATIC_ROOT = 'res'
+
 # 设置图片等静态文件的路径（电脑系统文件夹路径）
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "res"),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, "res"),
+# )
+SECURE_CONTENT_TYPE_NOSNIFF = False
